@@ -1,14 +1,11 @@
 <div class="center jumbotron">
 	<h1 align="center">Lucky Draw</h1>
 
-	<% if user_signed_in? %>
+	<% if user_signed_in? && current_user.super_admin?%>
 	<p align="center"><%= @lucky_person.name %></p>
 	<p align="center"><%= @lucky_person_petid %></p> 
 	<button type="button" class="btn btn-primary btn-lg center-block" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Selecting Winner">Draw now</button>
 	<% end %>
-
-
-	
 
 </div>
 
