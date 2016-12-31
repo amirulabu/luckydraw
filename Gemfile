@@ -15,7 +15,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'sprockets-rails', '>=2.1.4'
 gem 'devise'
-
+gem 'font-awesome-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
