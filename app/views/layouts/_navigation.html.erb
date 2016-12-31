@@ -3,12 +3,8 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">PML Lucky Draw</a>
+      <%= link_to "PML Lucky Draw", root_path, class: "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,8 +15,9 @@
           <ul class="dropdown-menu">
             <% if user_signed_in? %>
             <li><p> Logged in as <%= current_user.email %></p></li>
-            <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li> 
+            <li><%= link_to "Edit profile", edit_user_registration_path, :class => 'navbar-link' %></li> 
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+            <li><%= link_to "People list", people_path %></li>
             <% else %>
             <li><%#= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
             <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
