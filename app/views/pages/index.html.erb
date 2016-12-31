@@ -1,4 +1,45 @@
 <div class="center jumbotron">
 	<h1>Lucky Draw</h1><br>
 
+	<% if user_signed_in? %>
+	<p><%= @lucky_person.name %></p>
+	<p><%= @lucky_person.petid %></p> 
+	<a class="btn btn-default center-block" href="#" role="button">Link</a>
+	<% end %>
+	
+
+</div>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="well well-lg">
+			<h2>List name belum cabut</h2>
+			<br>
+			<ul class="list-name">
+
+				<% @persons.each do |person| %>
+				<li>
+					Person name: <%= person.name %>
+				</li>
+				<li>
+					<%= person.petid %>
+				</li>
+				<hr>
+				<% end %>
+			</ul>	
+
+		</div>
+
+
+	</div>
+	
+	<div class="col-md-6">
+		<div class="well well-lg">
+			<h2>List name dah kena cabut</h2>
+			<br>
+			...
+
+		</div>
+	</div>
+
 </div>
