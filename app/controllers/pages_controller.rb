@@ -6,9 +6,9 @@ class PagesController < ApplicationController
   		@lucky_person = Person.all.shuffle.first
   		@lucky_person_petid = ""
   		@lucky_person.petid.each_char.with_index do |i,index|
-  			if index < 2
+  			if index >= 3
   				@lucky_person_petid << i
-  			elsif index >=2
+  			elsif index < 3
   				@lucky_person_petid << "*"
   			end
   		end

@@ -7,8 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+Person.destroy_all
 
+50.times do |i|
+	Person.create(name: "Person##{i}", petid: "00#{(i+1)*123}")
+end
 
-    10.times do |i|
-      Person.create(name: "Person##{i}", petid: "00#{i}111")
-    end
+p "Done #{Person.count} seeds"
+
