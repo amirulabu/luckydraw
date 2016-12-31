@@ -15,4 +15,8 @@ class PagesController < ApplicationController
   	end
   end
 
+  def show
+  	@people = Person.all.sort
+  end
+
 end
