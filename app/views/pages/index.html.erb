@@ -1,10 +1,10 @@
 <div class="center jumbotron">
-	<h1>Lucky Draw</h1><br>
+	<h1>Lucky Draw</h1>
 
 	<% if user_signed_in? %>
 	<p><%= @lucky_person.name %></p>
-	<p><%= @lucky_person.petid %></p> 
-	<a class="btn btn-default center-block" href="#" role="button">Link</a>
+	<p><%= @lucky_person_petid %></p> 
+	<a class="btn btn-default center-block" href="#" role="button" onclick="test();return false;">Link</a>
 	<% end %>
 	
 
@@ -17,7 +17,7 @@
 			<br>
 			<ul class="list-name">
 
-				<% @persons.each do |person| %>
+				<% @people.each do |person| %>
 				<li>
 					Person name: <%= person.name %>
 				</li>
