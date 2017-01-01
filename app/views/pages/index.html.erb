@@ -1,7 +1,7 @@
 <div class="center jumbotron">
 	<h1 align="center">Lucky Draw</h1>
 
-	<% if user_signed_in? && current_user.super_admin?%>
+	<% if user_signed_in? && current_user.super_admin? %>
 	<p>Name: <span id="thechoosenname"><%= @lucky_person != nil ? @lucky_person.name : "--" %></span></p>
 	<p>Pet ID: <span id="thechoosenpetid">
 		<% if @lucky_person != nil %>
