@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     require_super_admin
     @lucky_person = Person.all.shuffle.first
     @winner = Winner.create(name: @lucky_person.name, petid: @lucky_person.petid)
+    @lucky_person.destroy
   end
 
   def show
