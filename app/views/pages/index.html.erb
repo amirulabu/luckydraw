@@ -14,6 +14,8 @@
 
 		</span></p>
 		<button type="button" class="btn btn-primary btn-lg center-block" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Selecting Winner">Draw now</button>
+		<% else %>
+		<button type="button" class="btn btn-success btn-lg center-block" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i>Refreshing list">Refresh</button>
 		<% end %>
 
 	</div>
@@ -38,13 +40,24 @@
 
 	<script type="text/javascript">
 
-		$('.btn').on('click', function() {
+		$('.btn-primary').on('click', function() {
 			var $this = $(this);
 			$this.button('loading');
 			setTimeout(function() {
 				$this.button('reset');
-			}, 2000);
+			}, 5000);
 			window.location.assign("/random");
 		});
+
+		$('.btn-success').on('click', function() {
+			var $this = $(this);
+			$this.button('loading');
+			
+			setTimeout(function() {
+				$this.button('reset');
+			}, 5000);
+			location.reload();
+		});
+		
 
 	</script>
