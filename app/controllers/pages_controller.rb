@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   end
 
   def show
-  	@people = Person.paginate(page: params[:page], per_page: 30)
+  	@people = Person.order("name ASC").paginate(page: params[:page], per_page: 30)
   end
 
 
