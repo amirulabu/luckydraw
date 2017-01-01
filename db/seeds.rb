@@ -8,6 +8,7 @@
 
 
 Person.destroy_all
+Winner.destroy_all
 
 50.times do |i|
 	Person.create(name: "Person##{i}", petid: "00#{(i+1)*123}")
