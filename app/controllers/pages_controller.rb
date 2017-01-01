@@ -1,24 +1,16 @@
 class PagesController < ApplicationController
 
-  @@totalwinner = 0
-
   def index
-  	@people = Person.where('winner != ?', 0)
-    @people = @people.order("winner ASC")
-    @@totalwinner = @people.count
-    #if @lucky_person != nil
-      @lucky_person = @people.order("winner ASC").first
-    #end
+  	@people = Winner.order("created_at DESC").all
+    if Winner.last != nil
+      @lucky_person = Winner.last
+    end
   end
 
   def thechoosen
     require_super_admin
     @lucky_person = Person.all.shuffle.first
-    @@totalwinner = 40 - @@totalwinner
-    @lucky_person.winner = @@totalwinner
-    @lucky_person.save
-    params[:id] = @lucky_person.id
-
+    @winner = Winner.create(name: @lucky_person.name, petid: @lucky_person.petid)
   end
 
   def show
