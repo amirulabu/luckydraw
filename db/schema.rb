@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161231235029) do
+ActiveRecord::Schema.define(version: 20170101030149) do
 
   create_table "people", force: :cascade do |t|
     t.string   "name"
     t.string   "petid"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "winner",     default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,6 +36,13 @@ ActiveRecord::Schema.define(version: 20161231235029) do
     t.boolean  "super_admin",            default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "winners", force: :cascade do |t|
+    t.string   "name"
+    t.string   "petid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
