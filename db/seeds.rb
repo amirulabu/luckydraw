@@ -9,7 +9,7 @@
 
 Person.destroy_all
 
-500.times do |i|
+50.times do |i|
 	Person.create(name: "Person##{i}", petid: "00#{(i+1)*123}")
 end
 

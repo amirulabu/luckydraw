@@ -16,6 +16,8 @@ gem 'sass-rails', '>= 3.2'
 gem 'sprockets-rails', '>=2.1.4'
 gem 'devise'
 gem 'font-awesome-rails'
+gem 'will_paginate','~>3.0.7'
+gem 'bootstrap-will_paginate', '~>0.0.10'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
