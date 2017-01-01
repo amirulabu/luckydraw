@@ -2,33 +2,49 @@
 	<h1 align="center">Lucky Draw</h1>
 
 	<% if user_signed_in? && current_user.super_admin?%>
-	<p align="center"><%= @lucky_person.name %></p>
-	<p align="center"><%= @lucky_person_petid %></p> 
-	<button type="button" class="btn btn-primary btn-lg center-block" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Selecting Winner">Draw now</button>
-	<% end %>
+	<p>Name: <span id="thechoosenname"><%= @lucky_person != nil ? @lucky_person.name : "--" %></span></p>
+	<p>Pet ID: <span id="thechoosenpetid">
+		<% if @lucky_person != nil %>
+			<%  @lucky_person.petid.each_char.with_index do |i,index| %>
+			<%= index > 3 ? i : "*" %>
+			<% end %>
+		<% else %>
+			<%= "--" %>
+		<% end %>
 
-</div>
+		</span></p>
+		<button type="button" class="btn btn-primary btn-lg center-block" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Selecting Winner">Draw now</button>
+		<% end %>
 
-<div class="row">
-	
-	<div class="col-md-12">
-		<div class="well well-lg">
-			<h2>Lucky Name List</h2>
-			<br>
-			...
+	</div>
 
+	<div class="row">
+
+		<div class="col-md-12">
+			<div class="well well-lg">
+				<h2>Lucky Name List</h2>
+				<ul class="list-group">
+					<% @people.each_with_index do |person,index| %>
+					<li class="list-group-item"> 
+						Prize number <%= ((@people.count - index) - 41).abs %> : 
+						<%= person.name %>
+					</li>
+					<% end %>
+				</ul>	
+
+			</div>
 		</div>
 	</div>
-</div>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 
-	$('.btn').on('click', function() {
-		var $this = $(this);
-		$this.button('loading');
-		setTimeout(function() {
-			$this.button('reset');
-		}, 2000);
-	});
+		$('.btn').on('click', function() {
+			var $this = $(this);
+			$this.button('loading');
+			setTimeout(function() {
+				$this.button('reset');
+			}, 2000);
+			window.location.assign("/random");
+		});
 
-</script>
+	</script>
