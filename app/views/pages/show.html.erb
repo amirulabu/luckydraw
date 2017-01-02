@@ -8,11 +8,13 @@
 			<ul class="list-group">
 			<div align="center">
 			<%= will_paginate @people %>
+			</div>
 				<% @people.each do |person| %>
 				<li class="list-group-item">
 					<%= person.name %>
 				</li>
 				<% end %>
+				<div align="center">
 				<%= will_paginate @people %>
 				</div>
 			</ul>	

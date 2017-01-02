@@ -29,10 +29,11 @@
 .jumbotron {
 	background-color: #FFEFD3;
 	color: #000000;
-	text-shadow: 0 0 6px black;
+	
 }
 .jumbotron h1{
 	font-size: 90px;
+	text-shadow: 0 0 6px black;
 
 }
 .jumbotron p{
@@ -42,3 +43,6 @@
 	background-color: #FFEFD3;
 }
 
+.list-group > li:hover{
+	background-color: #FFEFD3;
+}

@@ -44,14 +44,13 @@
 
 	$('.btn-primary').on('click', function() {
 		var $this = $(this);
-		$('.luckyname').fadeOut();
+		$('.luckyname').slideUp();
 		$this.button('loading');
 		setTimeout(function() {
-			var x;
 			$this.button('reset');
 			window.location.assign("/random");
 			$('.luckyname').slideDown();
-		}, 3000);
+		}, 5000);
 		
 	});
 
