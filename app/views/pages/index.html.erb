@@ -1,7 +1,7 @@
 <div class="center jumbotron">
 	<h1 align="center">Lucky Draw</h1>
 	
-	<% if user_signed_in? && current_user.super_admin? %>
+	
 	<div align="center" class="luckyname">
 	<p><%= @lucky_person != nil ? @lucky_person.name : "--" %></p>
 	<p>
@@ -14,6 +14,7 @@
 		<% end %>		
 	</p>
 	</div>
+	<% if user_signed_in? && current_user.super_admin? %>
 	<button type="button" class="btn btn-primary btn-lg center-block" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Selecting Winner">Draw now</button>
 	<% else %>
 	<button type="button" class="btn btn-success btn-lg center-block" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i>Refreshing list">Refresh</button>
@@ -50,7 +51,7 @@
 			$this.button('reset');
 			window.location.assign("/random");
 			$('.luckyname').slideDown();
-		}, 5000);
+		}, 3000);
 		
 	});
 

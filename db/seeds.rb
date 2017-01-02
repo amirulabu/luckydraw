@@ -21,7 +21,7 @@ require 'csv'
 
 puts "start read csv"
 CSV.foreach("db/seed.csv") do |row|
-	#print row[0] + " - - " +  row[1] + "\n"
+	print "."
 	Person.create(name: "#{row[0]}", petid: "#{row[1]}")
 
 end
