@@ -8,10 +8,18 @@ class PagesController < ApplicationController
   end
 
   def thechoosen
-    require_super_admin
-    @lucky_person = Person.all.shuffle.first
-    @winner = Winner.create(name: @lucky_person.name, petid: @lucky_person.petid)
-    @lucky_person.destroy
+    if current_user.super_admin?
+      @lucky_person = Person.all.shuffle.first
+      @winner = Winner.create(name: @lucky_person.name, petid: @lucky_person.petid)
+      @lucky_person.destroy
+      redirect_to root_path
+    elsif user_signed_in? 
+      flash[:alert] = "Only super admins can perform that action"
+      redirect_to root_path
+    else 
+      flash[:alert] = "Only admins can perform that action"
+      redirect_to root_path
+    end
   end
 
   def show
@@ -25,11 +33,5 @@ class PagesController < ApplicationController
     params.require(:person).permit(:username, :email, :password)
   end
 
-  def require_super_admin
-    if user_signed_in? && !current_user.super_admin?
-      flash[:danger] = "Only admin users can perform that action"
-      redirect_to root_path
-    end
-  end
 
 end

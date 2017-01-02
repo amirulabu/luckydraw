@@ -12,12 +12,18 @@
 
 <body>
 	<%= render 'layouts/navigation' %>
-	<% if notice %>
-	<p class="alert alert-success"><%= notice %></p>
-	<% end %>
-	<% if alert %>
-	<p class="alert alert-danger"><%= alert %></p>
-	<% end %>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<% if notice %>
+				<p class="alert alert-success"><%= notice %><a href="#" class="close" data-dismiss="alert">&#215;</a></p>
+				
+			<% end %>
+			<% if alert %>
+				<p class="alert alert-danger"><%= alert %><a href="#" class="close" data-dismiss="alert">&#215;</a></p>
+				
+			<% end %>
+		</div>
+	</div>
 	<div class="container">
 	<%= yield %>
 	</div>
