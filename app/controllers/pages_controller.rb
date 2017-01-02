@@ -26,7 +26,7 @@ class PagesController < ApplicationController
   end
 
   def require_super_admin
-    if user_signed_in? && current_user.super_admin?
+    if user_signed_in? && !current_user.super_admin?
       flash[:danger] = "Only admin users can perform that action"
       redirect_to root_path
     end
