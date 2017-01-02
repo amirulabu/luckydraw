@@ -27,7 +27,7 @@
 	<div class="col-md-12">
 		<div class="well well-lg">
 			<h2>Lucky Name List</h2>
-			<ul class="list-group">
+			<ul class="list-group front-list">
 				<% @people.each_with_index do |person,index| %>
 				<li class="list-group-item"> 
 					Prize number <%= ((@people.count - index) - 41).abs %> : 
