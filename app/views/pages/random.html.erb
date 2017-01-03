@@ -1,0 +1,11 @@
+
+	<p><%= @lucky_person != nil ? @lucky_person.name : "--" %></p>
+	<p>
+		<% if @lucky_person != nil %>
+			<%  @lucky_person.petid.each_char.with_index do |i,index| %>
+				<%= index > 2 ? i : "*" %>
+			<% end %>
+		<% else %>
+			<%= "--" %>
+		<% end %>		
+	</p>

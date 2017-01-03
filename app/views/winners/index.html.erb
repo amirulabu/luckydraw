@@ -1,31 +1,25 @@
-<div class="page-header">
-  <%= link_to new_winner_path, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New Winner
-  <% end %>
-  <h1>Listing winners</h1>
-</div>
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-            <th>Name</th>
-            <th>Petid</th>
-            <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <%= content_tag_for(:tr, @winners) do |winner| %>
-            <td><%= winner.name %></td>
-            <td><%= winner.petid %></td>
-            <td><%= link_to 'Show', winner %></td>
-        <td><%= link_to 'Edit', edit_winner_path(winner) %></td>
-        <td><%= link_to 'Destroy', winner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-md-12">
+    <div class="well well-lg">
+      <h2>Lucky Name List</h2>
+      <ul class="list-group front-list">
+        <% @winners.each_with_index do |winner,index| %> 
+        <% x = (41 - (@winners.count - index)) %>
+          <li class="list-group-item"> 
+              Prize number <%= x %> : 
+              <%= winner.name %>&#09;
+
+              <% if user_signed_in? && current_user.super_admin? %>
+                <%= link_to 'Show', winner %>&#09;
+                <%= link_to 'Edit', edit_winner_path(winner) %>&#09;
+                <%= link_to 'Destroy', winner, method: :delete, data: { confirm: 'Are you sure?' } %>&#09;
+              <% end %>
+          </li>
+        <% end %>
+      </ul> 
+
+    </div>
+  </div>
 </div>

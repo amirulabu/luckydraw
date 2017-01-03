@@ -4,7 +4,7 @@ class WinnersController < ApplicationController
   # GET /winners
   # GET /winners.json
   def index
-    @winners = Winner.all
+    @winners = Winner.all.order("created_at DESC")
   end
 
   # GET /winners/1
@@ -14,6 +14,7 @@ class WinnersController < ApplicationController
 
   # GET /winners/new
   def new
+    require_super_admin
     @winner = Winner.new
   end
 
@@ -24,6 +25,7 @@ class WinnersController < ApplicationController
   # POST /winners
   # POST /winners.json
   def create
+    require_super_admin
     @winner = Winner.new(winner_params)
 
     respond_to do |format|
@@ -40,6 +42,7 @@ class WinnersController < ApplicationController
   # PATCH/PUT /winners/1
   # PATCH/PUT /winners/1.json
   def update
+    require_super_admin
     respond_to do |format|
       if @winner.update(winner_params)
         format.html { redirect_to @winner, notice: 'Winner was successfully updated.' }
@@ -54,6 +57,7 @@ class WinnersController < ApplicationController
   # DELETE /winners/1
   # DELETE /winners/1.json
   def destroy
+    require_super_admin
     @winner.destroy
     respond_to do |format|
       format.html { redirect_to winners_url, notice: 'Winner was successfully destroyed.' }
@@ -70,5 +74,11 @@ class WinnersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def winner_params
       params.require(:winner).permit(:name, :petid)
+    end
+
+    def require_super_admin
+      unless current_user.super_admin?
+        redirect_to root_path
+      end
     end
 end
